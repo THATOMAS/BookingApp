@@ -5,6 +5,8 @@ import authRoute from './routes/auth.js'
 import roomsRoute from './routes/rooms.js'
 import usersRoute from './routes/users.js'
 import hotelsRoute from './routes/hotels.js'
+import cookieParser from "cookie-parser"
+
 
 dotenv.config()
 const app = express()
@@ -26,6 +28,7 @@ mongoose.connection.on('disconnected',()=>{
 mongoose.connection.on('connected',()=>{
     console.log('DB connected')
 })
+app.use(cookieParser())
 app.use(express.json())
 app.use('/api/auth',authRoute)
 app.use('/api/hotels',hotelsRoute)
@@ -34,7 +37,7 @@ app.use('/api/users',usersRoute)
 
 
 app.use((err,req,res,next)=>{
-    
+
     
     const errorStatus = err.status || 500
     const errorMessage = err.message || 'something went wrong'
