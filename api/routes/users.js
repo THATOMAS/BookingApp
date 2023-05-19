@@ -12,9 +12,8 @@ const router = express.Router()
 //     res.send('Hello user you are logged in and you can delete your account')
 // })
 // //check admin
-// router.get('/checkadmin/:id',verifyAdmin,(req,res,next)=>{
-//     res.send('Hello admin you are logged in and you can delete any account')
-// })
+router.get('/checkadmin/:id',verifyAdmin,(req,res,next)=>{
+    res.send('Hello admin you are logged in and you can delete any account')})
 //Get all users
 router.get("/",verifyAdmin,getAllUsers)
 //Update user
@@ -22,7 +21,6 @@ router.put('/:id',verifyUser,updateUser )
 //Get specefic user 
 router.get('/:id',specificUser)
 //Delete user
-router.delete('/:id',verifyUser,verifyAdmin,deleteUser)
+router.delete('/:id',deleteUser)
 
 export default router
-
