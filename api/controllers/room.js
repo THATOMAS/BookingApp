@@ -55,7 +55,7 @@ export const getAllRooms = async (req,res,next) =>{
     }
 }
 
-export const deleteRoom = async (req,res)=>{
+export const deleteRoom = async (req,res,next)=>{
     const hotelId = req.params.hotelid;
     
     try{
